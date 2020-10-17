@@ -7,3 +7,6 @@
 [submodule "wp-content/plugins/limit-login-attempts-reloaded"]
 	path = wp-content/plugins/limit-login-attempts-reloaded
 	url = https://github.com/WPChef/limit-login-attempts-reloaded.git
+[submodule "wp-content/plugins/woocommerce-payments"]
+	path = wp-content/plugins/woocommerce-payments
+	url = https://github.com/Automattic/woocommerce-payments.git
