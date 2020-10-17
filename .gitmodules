@@ -10,3 +10,6 @@
 [submodule "wp-content/plugins/woocommerce-payments"]
 	path = wp-content/plugins/woocommerce-payments
 	url = https://github.com/Automattic/woocommerce-payments.git
+[submodule "wp-content/plugins/wp-maintenance-mode"]
+	path = wp-content/plugins/wp-maintenance-mode
+	url = https://github.com/andrianvaleanu/WP-Maintenance-Mode.git
