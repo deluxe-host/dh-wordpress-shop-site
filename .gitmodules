@@ -4,3 +4,6 @@
 [submodule "wp-content/plugins/spinupwp"]
 	path = wp-content/plugins/spinupwp
 	url = https://github.com/deliciousbrains/spinupwp-plugin.git
+[submodule "wp-content/plugins/limit-login-attempts-reloaded"]
+	path = wp-content/plugins/limit-login-attempts-reloaded
+	url = https://github.com/WPChef/limit-login-attempts-reloaded.git
