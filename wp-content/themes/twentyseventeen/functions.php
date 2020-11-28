@@ -267,7 +267,7 @@ function twentyseventeen_content_width() {
 	}
 
 	/**
-	 * Filters Twenty Seventeen content width of the theme.
+	 * Filter Twenty Seventeen content width of the theme.
 	 *
 	 * @since Twenty Seventeen 1.0
 	 *
@@ -544,7 +544,7 @@ function twentyseventeen_content_image_sizes_attr( $sizes, $size ) {
 add_filter( 'wp_calculate_image_sizes', 'twentyseventeen_content_image_sizes_attr', 10, 2 );
 
 /**
- * Filters the `sizes` value in the header image markup.
+ * Filter the `sizes` value in the header image markup.
  *
  * @since Twenty Seventeen 1.0
  *

@@ -18,7 +18,6 @@
 		"__experimentalColor": {
 			"gradients": true,
 			"linkColor": true
-		},
-		"__experimentalPadding": true
+		}
 	}
 }

@@ -30,7 +30,7 @@ get_header();
 						<figure class="entry-attachment wp-block-image">
 						<?php
 							/**
-							 * Filters the default twentynineteen image attachment size.
+							 * Filter the default twentynineteen image attachment size.
 							 *
 							 * @since Twenty Sixteen 1.0
 							 *

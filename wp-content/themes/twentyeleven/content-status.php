@@ -35,7 +35,7 @@
 			<div class="avatar">
 				<?php
 				/**
-				 * Filters the Twenty Eleven status avatar size.
+				 * Filter the Twenty Eleven status avatar size.
 				 *
 				 * @since Twenty Eleven 1.0
 				 *

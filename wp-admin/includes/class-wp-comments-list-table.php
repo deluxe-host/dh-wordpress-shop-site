@@ -390,14 +390,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 		if ( ! isset( $has_items ) ) {
 			$has_items = $this->has_items();
 		}
-
 		echo '<div class="alignleft actions">';
-
 		if ( 'top' === $which ) {
 			ob_start();
 
-			$this->comment_type_dropdown( $comment_type );
-
+			$this->comment_status_dropdown( $comment_type );
 			/**
 			 * Fires just before the Filter submit button for comment types.
 			 *
@@ -409,7 +406,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 
 			if ( ! empty( $output ) && $this->has_items() ) {
 				echo $output;
-				submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
+				submit_button( esc_html__( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
 			}
 		}
 
@@ -418,18 +415,14 @@ class WP_Comments_List_Table extends WP_List_Table {
 			$title = ( 'spam' === $comment_status ) ? esc_attr__( 'Empty Spam' ) : esc_attr__( 'Empty Trash' );
 			submit_button( $title, 'apply', 'delete_all', false );
 		}
-
 		/**
 		 * Fires after the Filter submit button for comment types.
 		 *
 		 * @since 2.5.0
-		 * @since 5.6.0 The `$which` parameter was added.
 		 *
 		 * @param string $comment_status The comment status name. Default 'All'.
-		 * @param string $which          The location of the extra table nav markup: 'top' or 'bottom'.
 		 */
-		do_action( 'manage_comments_nav', $comment_status, $which );
-
+		do_action( 'manage_comments_nav', $comment_status );
 		echo '</div>';
 	}
 
@@ -472,35 +465,34 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Displays a comment type drop-down for filtering on the Comments list table.
+	 * Displays a comment status drop-down for filtering on the Comments list table.
 	 *
 	 * @since 5.5.0
-	 * @since 5.6.0 Renamed from `comment_status_dropdown()` to `comment_type_dropdown()`.
 	 *
 	 * @param string $comment_type The current comment type slug.
 	 */
-	protected function comment_type_dropdown( $comment_type ) {
+	protected function comment_status_dropdown( $comment_type ) {
 		/**
-		 * Filters the comment types shown in the drop-down menu on the Comments list table.
+		 * Filters the comment types dropdown menu.
 		 *
 		 * @since 2.7.0
 		 *
-		 * @param string[] $comment_types Array of comment type labels keyed by their name.
+		 * @param array $comment_types An array of comment types. Accepts 'Comments', 'Pings'.
 		 */
 		$comment_types = apply_filters(
 			'admin_comment_types_dropdown',
 			array(
-				'comment' => __( 'Comments' ),
-				'pings'   => __( 'Pings' ),
+				'comment' => esc_html__( 'Comments' ),
+				'pings'   => esc_html__( 'Pings' ),
 			)
 		);
 
 		if ( $comment_types && is_array( $comment_types ) ) {
-			printf( '<label class="screen-reader-text" for="filter-by-comment-type">%s</label>', __( 'Filter by comment type' ) );
+			printf( '<label class="screen-reader-text" for="filter-by-comment-type">%s</label>', esc_html__( 'Filter by comment type' ) );
 
 			echo '<select id="filter-by-comment-type" name="comment_type">';
 
-			printf( "\t<option value=''>%s</option>", __( 'All comment types' ) );
+			printf( "\t<option value=''>%s</option>", esc_html__( 'All comment types' ) );
 
 			foreach ( $comment_types as $type => $label ) {
 				if ( get_comments(
@@ -955,9 +947,9 @@ class WP_Comments_List_Table extends WP_List_Table {
 		$submitted = sprintf(
 			/* translators: 1: Comment date, 2: Comment time. */
 			__( '%1$s at %2$s' ),
-			/* translators: Comment date format. See https://www.php.net/manual/datetime.format.php */
+			/* translators: Comment date format. See https://www.php.net/date */
 			get_comment_date( __( 'Y/m/d' ), $comment ),
-			/* translators: Comment time format. See https://www.php.net/manual/datetime.format.php */
+			/* translators: Comment time format. See https://www.php.net/date */
 			get_comment_date( __( 'g:i a' ), $comment )
 		);
 

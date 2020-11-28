@@ -93,7 +93,7 @@ get_header(); ?>
 									<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php the_title_attribute(); ?>" rel="attachment">
 										<?php
 										/**
-										 * Filters the Twenty Eleven default attachment size.
+										 * Filter the Twenty Eleven default attachment size.
 										 *
 										 * @since Twenty Eleven 1.0
 										 *

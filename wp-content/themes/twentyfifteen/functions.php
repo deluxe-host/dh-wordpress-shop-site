@@ -147,7 +147,7 @@ if ( ! function_exists( 'twentyfifteen_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			/**
-			 * Filters Twenty Fifteen custom-background support arguments.
+			 * Filter Twenty Fifteen custom-background support arguments.
 			 *
 			 * @since Twenty Fifteen 1.0
 			 *

@@ -122,8 +122,8 @@ if ( ! class_exists( 'TwentyTwenty_Customize' ) ) {
 					'section' => 'colors',
 					'label'   => __( 'Primary Color', 'twentytwenty' ),
 					'choices' => array(
-						'default' => _x( 'Default', 'color', 'twentytwenty' ),
-						'custom'  => _x( 'Custom', 'color', 'twentytwenty' ),
+						'default' => __( 'Default', 'twentytwenty' ),
+						'custom'  => __( 'Custom', 'twentytwenty' ),
 					),
 				)
 			);
@@ -503,7 +503,7 @@ if ( ! function_exists( 'twentytwenty_customize_partial_site_logo' ) ) {
  */
 function twentytwenty_customize_opacity_range() {
 	/**
-	 * Filters the input attributes for opacity
+	 * Filter the input attributes for opacity
 	 *
 	 * @param array $attrs {
 	 *     The attributes

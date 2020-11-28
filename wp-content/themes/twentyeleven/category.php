@@ -26,7 +26,7 @@ get_header(); ?>
 						$category_description = category_description();
 					if ( ! empty( $category_description ) ) {
 						/**
-						 * Filters the default Twenty Eleven category description.
+						 * Filter the default Twenty Eleven category description.
 						 *
 						 * @since Twenty Eleven 1.0
 						 *

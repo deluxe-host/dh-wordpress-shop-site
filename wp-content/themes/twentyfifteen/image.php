@@ -35,7 +35,7 @@ get_header(); ?>
 					<div class="entry-attachment">
 						<?php
 							/**
-							 * Filters the default Twenty Fifteen image attachment size.
+							 * Filter the default Twenty Fifteen image attachment size.
 							 *
 							 * @since Twenty Fifteen 1.0
 							 *

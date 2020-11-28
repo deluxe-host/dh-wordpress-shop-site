@@ -88,8 +88,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
-
-define( 'WPOSES_AWS_ACCESS_KEY_ID',     'xxxxxxxxxxxxxxxxxxxx' );
-define( 'WPOSES_AWS_SECRET_ACCESS_KEY', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' );
-define( 'WPOSES_HIDE_VERIFIED', true );
-

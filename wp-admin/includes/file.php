@@ -510,7 +510,7 @@ function wp_edit_theme_plugin_file( $args ) {
 
 		$scrape_key   = md5( rand() );
 		$transient    = 'scrape_key_' . $scrape_key;
-		$scrape_nonce = (string) rand();
+		$scrape_nonce = strval( rand() );
 		// It shouldn't take more than 60 seconds to make the two loopback requests.
 		set_transient( $transient, $scrape_nonce, 60 );
 
@@ -1125,7 +1125,7 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 			}
 
 			/**
-			 * Filters the URL where the signature for a file is located.
+			 * Filter the URL where the signature for a file is located.
 			 *
 			 * @since 5.2.0
 			 *
@@ -1394,7 +1394,7 @@ function wp_trusted_keys() {
 	// TODO: Add key #2 with longer expiration.
 
 	/**
-	 * Filters the valid signing keys used to verify the contents of files.
+	 * Filter the valid signing keys used to verify the contents of files.
 	 *
 	 * @since 5.2.0
 	 *

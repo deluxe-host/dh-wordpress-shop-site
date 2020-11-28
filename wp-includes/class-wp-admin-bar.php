@@ -243,9 +243,7 @@ class WP_Admin_Bar {
 	}
 
 	/**
-	 * Add a group to a toolbar menu node.
-	 *
-	 * Groups can be used to organize toolbar items into distinct sections of a toolbar menu.
+	 * Add a group to a menu node.
 	 *
 	 * @since 3.3.0
 	 *
@@ -438,7 +436,7 @@ class WP_Admin_Bar {
 
 		?>
 		<div id="wpadminbar" class="<?php echo $class; ?>">
-			<?php if ( ! is_admin() && ! did_action( 'wp_body_open' ) ) { ?>
+			<?php if ( ! is_admin() ) { ?>
 				<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e( 'Skip to toolbar' ); ?></a>
 			<?php } ?>
 			<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="<?php esc_attr_e( 'Toolbar' ); ?>">

@@ -323,7 +323,7 @@ function login_footer( $input_id = '' ) {
 }
 
 /**
- * Outputs the Javascript to handle the form shaking on the login page.
+ * Outputs the Javascript to handle the form shaking.
  *
  * @since 3.0.0
  */
@@ -336,7 +336,7 @@ function wp_shake_js() {
 }
 
 /**
- * Outputs the viewport meta tag for the login page.
+ * Outputs the viewport meta tag.
  *
  * @since 3.7.0
  */
@@ -347,11 +347,11 @@ function wp_login_viewport_meta() {
 }
 
 /**
- * Handles sending a password retrieval email to a user.
+ * Handles sending password retrieval email to user.
  *
  * @since 2.5.0
  *
- * @return true|WP_Error True when finished, WP_Error object on error.
+ * @return bool|WP_Error True: when finish. WP_Error on error
  */
 function retrieve_password() {
 	$errors    = new WP_Error();
@@ -422,7 +422,7 @@ function retrieve_password() {
 	} else {
 		/*
 		 * The blogname option is escaped with esc_html on the way into the database
-		 * in sanitize_option. We want to reverse this for the plain text arena of emails.
+		 * in sanitize_option we want to reverse this for the plain text arena of emails.
 		 */
 		$site_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 	}
@@ -445,7 +445,7 @@ function retrieve_password() {
 	 * @since 2.8.0
 	 * @since 4.4.0 Added the `$user_login` and `$user_data` parameters.
 	 *
-	 * @param string  $title      Email subject.
+	 * @param string  $title      Default email title.
 	 * @param string  $user_login The username for the user.
 	 * @param WP_User $user_data  WP_User object.
 	 */
@@ -459,7 +459,7 @@ function retrieve_password() {
 	 * @since 2.8.0
 	 * @since 4.1.0 Added `$user_login` and `$user_data` parameters.
 	 *
-	 * @param string  $message    Email message.
+	 * @param string  $message    Default mail message.
 	 * @param string  $key        The activation key.
 	 * @param string  $user_login The username for the user.
 	 * @param WP_User $user_data  WP_User object.
@@ -685,7 +685,7 @@ switch ( $action ) {
 				/* translators: URL to the WordPress help section about admin email. */
 				$admin_email_help_url = __( 'https://wordpress.org/support/article/settings-general-screen/#email-address' );
 
-				/* translators: Accessibility text. */
+				/* translators: accessibility text */
 				$accessibility_text = sprintf( '<span class="screen-reader-text"> %s</span>', __( '(opens in a new tab)' ) );
 
 				printf(
@@ -1371,19 +1371,6 @@ switch ( $action ) {
 				$errors->add( 'updated', __( '<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new.' ), 'message' );
 			} elseif ( WP_Recovery_Mode_Link_Service::LOGIN_ACTION_ENTERED === $action ) {
 				$errors->add( 'enter_recovery_mode', __( 'Recovery Mode Initialized. Please log in to continue.' ), 'message' );
-			} elseif ( isset( $_GET['redirect_to'] ) && false !== strpos( $_GET['redirect_to'], 'wp-admin/authorize-application.php' ) ) {
-				$query_component = wp_parse_url( $_GET['redirect_to'], PHP_URL_QUERY );
-				parse_str( $query_component, $query );
-
-				if ( ! empty( $query['app_name'] ) ) {
-					/* translators: 1: Website name, 2: Application name. */
-					$message = sprintf( 'Please log in to %1$s to authorize %2$s to connect to your account.', get_bloginfo( 'name', 'display' ), '<strong>' . esc_html( $query['app_name'] ) . '</strong>' );
-				} else {
-					/* translators: %s: Website name. */
-					$message = sprintf( 'Please log in to %s to proceed with authorization.', get_bloginfo( 'name', 'display' ) );
-				}
-
-				$errors->add( 'authorize_application', $message, 'message' );
 			}
 		}
 

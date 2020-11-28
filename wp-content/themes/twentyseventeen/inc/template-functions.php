@@ -76,7 +76,7 @@ function twentyseventeen_panel_count() {
 	$panel_count = 0;
 
 	/**
-	 * Filters the number of front page sections in Twenty Seventeen.
+	 * Filter number of front page sections in Twenty Seventeen.
 	 *
 	 * @since Twenty Seventeen 1.0
 	 *

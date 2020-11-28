@@ -258,7 +258,7 @@ class WP_Term_Query {
 		$query['offset'] = absint( $query['offset'] );
 
 		// 'parent' overrides 'child_of'.
-		if ( 0 < (int) $query['parent'] ) {
+		if ( 0 < intval( $query['parent'] ) ) {
 			$query['child_of'] = false;
 		}
 
@@ -346,7 +346,7 @@ class WP_Term_Query {
 		}
 
 		// 'parent' overrides 'child_of'.
-		if ( 0 < (int) $args['parent'] ) {
+		if ( 0 < intval( $args['parent'] ) ) {
 			$args['child_of'] = false;
 		}
 
@@ -443,7 +443,7 @@ class WP_Term_Query {
 					(array) get_terms(
 						array(
 							'taxonomy'   => reset( $taxonomies ),
-							'child_of'   => (int) $extrunk,
+							'child_of'   => intval( $extrunk ),
 							'fields'     => 'ids',
 							'hide_empty' => 0,
 						)
@@ -688,9 +688,9 @@ class WP_Term_Query {
 		$this->terms = null;
 
 		/**
-		 * Filters the terms array before the query takes place.
+		 * Filter the terms array before the query takes place.
 		 *
-		 * Return a non-null value to bypass WordPress' default term queries.
+		 * Return a non-null value to bypass WordPress's default term queries.
 		 *
 		 * @since 5.3.0
 		 *

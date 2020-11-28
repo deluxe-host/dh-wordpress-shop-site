@@ -863,7 +863,7 @@ function wp_get_schedule( $hook, $args = array() ) {
 	}
 
 	/**
-	 * Filters the schedule for a hook.
+	 * Filter the schedule for a hook.
 	 *
 	 * @since 5.1.0
 	 *

@@ -999,7 +999,7 @@ function wp_embed_excerpt_attachment( $content ) {
 }
 
 /**
- * Enqueues embed iframe default CSS and JS.
+ * Enqueue embed iframe default CSS and JS & fire do_action('enqueue_embed_scripts')
  *
  * Enqueue PNG fallback CSS for embed iframe for legacy versions of IE.
  *

@@ -2,10 +2,18 @@
  * Colors
  */
 /**
+ * Deprecated colors.
+ * Please avoid using these.
+ */
+/**
  * Breakpoints & Media Queries
  */
 /**
  * Colors
+ */
+/**
+ * Deprecated colors.
+ * Please avoid using these.
  */
 /**
  * Fonts & basic variables.
@@ -28,9 +36,6 @@
  */
 /**
  * Border radii.
- */
-/**
- * Block paddings.
  */
 /**
  * Breakpoint mixins
@@ -99,7 +104,7 @@
   min-width: 150px;
   max-width: 500px; }
   .block-editor-format-toolbar__link-container-value.has-invalid-link {
-    color: #cc1818; }
+    color: #d94f4f; }
 
 .components-inline-color__indicator {
   position: absolute;

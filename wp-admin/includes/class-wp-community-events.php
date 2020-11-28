@@ -370,6 +370,7 @@ class WP_Community_Events {
 	 * of the user who triggered the cache refresh, rather than their own.
 	 *
 	 * @since 4.8.0
+	 * @deprecated 5.6.0 No longer used in core.
 	 *
 	 * @param array $response_body The response which contains the events.
 	 * @return array The response with dates and times formatted.
@@ -378,7 +379,7 @@ class WP_Community_Events {
 		_deprecated_function(
 			__METHOD__,
 			'5.5.2',
-			'This is no longer used by Core, and only kept for backwards-compatibility.'
+			'This is no longer used by core, and only kept for backward compatibility.'
 		);
 
 		if ( isset( $response_body['events'] ) ) {
@@ -391,7 +392,7 @@ class WP_Community_Events {
 				 * so that users can tell at a glance if the event is on a day they
 				 * are available, without having to open the link.
 				 */
-				/* translators: Date format for upcoming events on the dashboard. Include the day of the week. See https://www.php.net/manual/datetime.format.php */
+				/* translators: Date format for upcoming events on the dashboard. Include the day of the week. See https://www.php.net/date */
 				$formatted_date = date_i18n( __( 'l, M j, Y' ), $timestamp );
 				$formatted_time = date_i18n( get_option( 'time_format' ), $timestamp );
 
@@ -400,7 +401,7 @@ class WP_Community_Events {
 					$formatted_end_date = date_i18n( __( 'l, M j, Y' ), $end_timestamp );
 
 					if ( 'meetup' !== $event['type'] && $formatted_end_date !== $formatted_date ) {
-						/* translators: Upcoming events month format. See https://www.php.net/manual/datetime.format.php */
+						/* translators: Upcoming events month format. See https://www.php.net/date */
 						$start_month = date_i18n( _x( 'F', 'upcoming events month format' ), $timestamp );
 						$end_month   = date_i18n( _x( 'F', 'upcoming events month format' ), $end_timestamp );
 
@@ -409,10 +410,10 @@ class WP_Community_Events {
 								/* translators: Date string for upcoming events. 1: Month, 2: Starting day, 3: Ending day, 4: Year. */
 								__( '%1$s %2$d–%3$d, %4$d' ),
 								$start_month,
-								/* translators: Upcoming events day format. See https://www.php.net/manual/datetime.format.php */
+								/* translators: Upcoming events day format. See https://www.php.net/date */
 								date_i18n( _x( 'j', 'upcoming events day format' ), $timestamp ),
 								date_i18n( _x( 'j', 'upcoming events day format' ), $end_timestamp ),
-								/* translators: Upcoming events year format. See https://www.php.net/manual/datetime.format.php */
+								/* translators: Upcoming events year format. See https://www.php.net/date */
 								date_i18n( _x( 'Y', 'upcoming events year format' ), $timestamp )
 							);
 						} else {

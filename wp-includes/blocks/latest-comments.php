@@ -116,28 +116,34 @@ function render_block_core_latest_comments( $attributes = array() ) {
 		}
 	}
 
-	$classnames = array();
+	$class = 'wp-block-latest-comments';
+	if ( ! empty( $attributes['className'] ) ) {
+		$class .= ' ' . $attributes['className'];
+	}
+	if ( isset( $attributes['align'] ) ) {
+		$class .= " align{$attributes['align']}";
+	}
 	if ( $attributes['displayAvatar'] ) {
-		$classnames[] = 'has-avatars';
+		$class .= ' has-avatars';
 	}
 	if ( $attributes['displayDate'] ) {
-		$classnames[] = 'has-dates';
+		$class .= ' has-dates';
 	}
 	if ( $attributes['displayExcerpt'] ) {
-		$classnames[] = 'has-excerpts';
+		$class .= ' has-excerpts';
 	}
 	if ( empty( $comments ) ) {
-		$classnames[] = 'no-comments';
+		$class .= ' no-comments';
 	}
-	$class = esc_attr( implode( ' ', $classnames ) );
+	$classnames = esc_attr( $class );
 
 	return ! empty( $comments ) ? sprintf(
 		'<ol class="%1$s">%2$s</ol>',
-		$class,
+		$classnames,
 		$list_items_markup
 	) : sprintf(
 		'<div class="%1$s">%2$s</div>',
-		$class,
+		$classnames,
 		__( 'No comments to show.' )
 	);
 }

@@ -19,7 +19,7 @@ function twentyfifteen_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		/**
-		 * Filters Twenty Fifteen custom-header support arguments.
+		 * Filter Twenty Fifteen custom-header support arguments.
 		 *
 		 * @since Twenty Fifteen 1.0
 		 *

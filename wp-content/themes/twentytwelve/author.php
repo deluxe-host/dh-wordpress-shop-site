@@ -57,7 +57,7 @@ get_header(); ?>
 				<div class="author-avatar">
 					<?php
 					/**
-					 * Filters the author bio avatar size.
+					 * Filter the author bio avatar size.
 					 *
 					 * @since Twenty Twelve 1.0
 					 *

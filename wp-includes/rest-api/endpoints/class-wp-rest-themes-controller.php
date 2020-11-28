@@ -439,7 +439,7 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 		);
 
 		/**
-		 * Filters collection parameters for the themes controller.
+		 * Filter collection parameters for the themes controller.
 		 *
 		 * @since 5.0.0
 		 *

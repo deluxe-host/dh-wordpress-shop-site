@@ -41,7 +41,7 @@ if ( get_the_author_meta( 'description' ) ) :
 						<div id="author-avatar">
 							<?php
 							/**
-							 * Filters the Twenty Ten author bio avatar size.
+							 * Filter the Twenty Ten author bio avatar size.
 							 *
 							 * @since Twenty Ten 1.0
 							 *

@@ -291,17 +291,14 @@ class WP_Site_Query {
 		$site_data = null;
 
 		/**
-		 * Filters the site data before the get_sites query takes place.
+		 * Filter the site data before the get_sites query takes place.
 		 *
-		 * Return a non-null value to bypass WordPress' default site queries.
+		 * Return a non-null value to bypass WordPress's default site queries.
 		 *
-		 * The expected return type from this filter depends on the value passed
-		 * in the request query vars:
-		 * - When `$this->query_vars['count']` is set, the filter should return
-		 *   the site count as an integer.
-		 * - When `'ids' === $this->query_vars['fields']`, the filter should return
-		 *   an array of site IDs.
-		 * - Otherwise the filter should return an array of WP_Site objects.
+		 * The expected return type from this filter depends on the value passed in the request query_vars:
+		 * When `$this->query_vars['count']` is set, the filter should return the site count as an int.
+		 * When `'ids' === $this->query_vars['fields']`, the filter should return an array of site IDs.
+		 * Otherwise the filter should return an array of WP_Site objects.
 		 *
 		 * @since 5.2.0
 		 *
@@ -351,7 +348,7 @@ class WP_Site_Query {
 		// If querying for a count only, there's nothing more to do.
 		if ( $this->query_vars['count'] ) {
 			// $site_ids is actually a count in this case.
-			return (int) $site_ids;
+			return intval( $site_ids );
 		}
 
 		$site_ids = array_map( 'intval', $site_ids );
@@ -660,7 +657,7 @@ class WP_Site_Query {
 		$this->request = "{$this->sql_clauses['select']} {$this->sql_clauses['from']} {$where} {$this->sql_clauses['groupby']} {$this->sql_clauses['orderby']} {$this->sql_clauses['limits']}";
 
 		if ( $this->query_vars['count'] ) {
-			return (int) $wpdb->get_var( $this->request );
+			return intval( $wpdb->get_var( $this->request ) );
 		}
 
 		$site_ids = $wpdb->get_col( $this->request );

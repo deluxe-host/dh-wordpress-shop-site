@@ -1,15 +1,6 @@
 {
 	"name": "core/social-links",
 	"category": "widgets",
-	"attributes": {
-		"openInNewTab": {
-			"type": "boolean",
-			"default": false
-		}
-	},
-	"providesContext": {
-		"openInNewTab": "openInNewTab"
-	},
 	"supports": {
 		"align": [
 			"left",

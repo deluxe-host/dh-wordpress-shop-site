@@ -105,7 +105,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	);
 
 	/**
-	 * Filters the query arguments sent as part of the core version check.
+	 * Filter the query arguments sent as part of the core version check.
 	 *
 	 * WARNING: Changing this data may result in your site not receiving security updates.
 	 * Please exercise extreme caution.
@@ -322,7 +322,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 		foreach ( $plugins as $file => $p ) {
 			$new_option->checked[ $file ] = $p['Version'];
 
-			if ( ! isset( $current->checked[ $file ] ) || (string) $current->checked[ $file ] !== (string) $p['Version'] ) {
+			if ( ! isset( $current->checked[ $file ] ) || strval( $current->checked[ $file ] ) !== strval( $p['Version'] ) ) {
 				$plugin_changed = true;
 			}
 		}
@@ -527,7 +527,7 @@ function wp_update_themes( $extra_stats = array() ) {
 		$theme_changed = false;
 
 		foreach ( $checked as $slug => $v ) {
-			if ( ! isset( $last_update->checked[ $slug ] ) || (string) $last_update->checked[ $slug ] !== (string) $v ) {
+			if ( ! isset( $last_update->checked[ $slug ] ) || strval( $last_update->checked[ $slug ] ) !== strval( $v ) ) {
 				$theme_changed = true;
 			}
 		}

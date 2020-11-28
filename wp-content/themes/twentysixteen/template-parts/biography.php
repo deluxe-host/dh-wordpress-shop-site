@@ -12,7 +12,7 @@
 	<div class="author-avatar">
 		<?php
 		/**
-		 * Filters the Twenty Sixteen author bio avatar size.
+		 * Filter the Twenty Sixteen author bio avatar size.
 		 *
 		 * @since Twenty Sixteen 1.0
 		 *

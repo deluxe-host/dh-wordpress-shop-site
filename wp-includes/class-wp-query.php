@@ -63,7 +63,7 @@ class WP_Query {
 	 * Holds the contents of a post, page, category, attachment.
 	 *
 	 * @since 1.5.0
-	 * @var WP_Term|WP_Post_Type|WP_Post|WP_User|null
+	 * @var object|array
 	 */
 	public $queried_object;
 
@@ -759,11 +759,11 @@ class WP_Query {
 			$this->is_favicon = true;
 		}
 
-		if ( ! is_scalar( $qv['p'] ) || (int) $qv['p'] < 0 ) {
+		if ( ! is_scalar( $qv['p'] ) || $qv['p'] < 0 ) {
 			$qv['p']     = 0;
 			$qv['error'] = '404';
 		} else {
-			$qv['p'] = (int) $qv['p'];
+			$qv['p'] = intval( $qv['p'] );
 		}
 
 		$qv['page_id']  = absint( $qv['page_id'] );
@@ -942,7 +942,7 @@ class WP_Query {
 			$this->is_trackback = true;
 		}
 
-		if ( '' != $qv['paged'] && ( (int) $qv['paged'] > 1 ) ) {
+		if ( '' != $qv['paged'] && ( intval( $qv['paged'] ) > 1 ) ) {
 			$this->is_paged = true;
 		}
 
@@ -1604,7 +1604,7 @@ class WP_Query {
 		// If RAND() contains a seed value, sanitize and add to allowed keys.
 		$rand_with_seed = false;
 		if ( preg_match( '/RAND\(([0-9]+)\)/i', $orderby, $matches ) ) {
-			$orderby        = sprintf( 'RAND(%s)', (int) $matches[1] );
+			$orderby        = sprintf( 'RAND(%s)', intval( $matches[1] ) );
 			$allowed_keys[] = $orderby;
 			$rand_with_seed = true;
 		}
@@ -1721,7 +1721,7 @@ class WP_Query {
 	}
 
 	/**
-	 * Retrieves the value of a query variable.
+	 * Retrieve query variable.
 	 *
 	 * @since 1.5.0
 	 * @since 3.9.0 The `$default` argument was introduced.
@@ -1739,7 +1739,7 @@ class WP_Query {
 	}
 
 	/**
-	 * Sets the value of a query variable.
+	 * Set query variable.
 	 *
 	 * @since 1.5.0
 	 *
@@ -2263,7 +2263,7 @@ class WP_Query {
 			// Numeric comment count is converted to array format.
 			if ( is_numeric( $q['comment_count'] ) ) {
 				$q['comment_count'] = array(
-					'value' => (int) $q['comment_count'],
+					'value' => intval( $q['comment_count'] ),
 				);
 			}
 
@@ -2558,7 +2558,7 @@ class WP_Query {
 			 * @since 1.5.0
 			 *
 			 * @param string   $where The WHERE clause of the query.
-			 * @param WP_Query $this  The WP_Query instance (passed by reference).
+			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$where = apply_filters_ref_array( 'posts_where', array( $where, &$this ) );
 
@@ -2567,7 +2567,7 @@ class WP_Query {
 			 *
 			 * @since 1.5.0
 			 *
-			 * @param string   $join The JOIN clause of the query.
+			 * @param string   $join  The JOIN clause of the query.
 			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$join = apply_filters_ref_array( 'posts_join', array( $join, &$this ) );
@@ -2609,7 +2609,7 @@ class WP_Query {
 				 * @since 2.2.0
 				 *
 				 * @param string   $cjoin The JOIN clause of the query.
-				 * @param WP_Query $this  The WP_Query instance (passed by reference).
+				 * @param WP_Query $this The WP_Query instance (passed by reference).
 				 */
 				$cjoin = apply_filters_ref_array( 'comment_feed_join', array( $cjoin, &$this ) );
 
@@ -2693,7 +2693,7 @@ class WP_Query {
 			 * @since 1.5.0
 			 *
 			 * @param string   $where The WHERE clause of the query.
-			 * @param WP_Query $this  The WP_Query instance (passed by reference).
+			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$where = apply_filters_ref_array( 'posts_where_paged', array( $where, &$this ) );
 
@@ -2714,7 +2714,7 @@ class WP_Query {
 			 *
 			 * @since 1.5.0
 			 *
-			 * @param string   $join The JOIN clause of the query.
+			 * @param string   $join  The JOIN clause of the query.
 			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$join = apply_filters_ref_array( 'posts_join_paged', array( $join, &$this ) );
@@ -2805,7 +2805,7 @@ class WP_Query {
 			 * @since 2.5.0
 			 *
 			 * @param string   $where The WHERE clause of the query.
-			 * @param WP_Query $this  The WP_Query instance (passed by reference).
+			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$where = apply_filters_ref_array( 'posts_where_request', array( $where, &$this ) );
 
@@ -2828,7 +2828,7 @@ class WP_Query {
 			 *
 			 * @since 2.5.0
 			 *
-			 * @param string   $join The JOIN clause of the query.
+			 * @param string   $join  The JOIN clause of the query.
 			 * @param WP_Query $this The WP_Query instance (passed by reference).
 			 */
 			$join = apply_filters_ref_array( 'posts_join_request', array( $join, &$this ) );
@@ -2935,7 +2935,7 @@ class WP_Query {
 		/**
 		 * Filters the posts array before the query takes place.
 		 *
-		 * Return a non-null value to bypass WordPress' default post queries.
+		 * Return a non-null value to bypass WordPress's default post queries.
 		 *
 		 * Filtering functions that require pagination information are encouraged to set
 		 * the `found_posts` and `max_num_pages` properties of the WP_Query object,
@@ -3185,7 +3185,7 @@ class WP_Query {
 			 * @since 1.5.0
 			 *
 			 * @param WP_Post[] $posts Array of post objects.
-			 * @param WP_Query  $this  The WP_Query instance (passed by reference).
+			 * @param WP_Query  $this The WP_Query instance (passed by reference).
 			 */
 			$this->posts = apply_filters_ref_array( 'the_posts', array( $this->posts, &$this ) );
 		}
@@ -3449,7 +3449,7 @@ class WP_Query {
 	}
 
 	/**
-	 * Retrieves the currently queried object.
+	 * Retrieve queried object.
 	 *
 	 * If queried object is not set, then the queried object will be set from
 	 * the category, tag, taxonomy, posts page, single post, page, or author
@@ -3457,7 +3457,7 @@ class WP_Query {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @return WP_Term|WP_Post_Type|WP_Post|WP_User|null The queried object.
+	 * @return object
 	 */
 	public function get_queried_object() {
 		if ( isset( $this->queried_object ) ) {
@@ -3527,7 +3527,7 @@ class WP_Query {
 	}
 
 	/**
-	 * Retrieves the ID of the currently queried object.
+	 * Retrieve ID of the current queried object.
 	 *
 	 * @since 1.5.0
 	 *

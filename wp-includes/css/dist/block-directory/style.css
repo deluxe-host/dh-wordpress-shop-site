@@ -2,10 +2,18 @@
  * Colors
  */
 /**
+ * Deprecated colors.
+ * Please avoid using these.
+ */
+/**
  * Breakpoints & Media Queries
  */
 /**
  * Colors
+ */
+/**
+ * Deprecated colors.
+ * Please avoid using these.
  */
 /**
  * Fonts & basic variables.
@@ -28,9 +36,6 @@
  */
 /**
  * Border radii.
- */
-/**
- * Block paddings.
  */
 /**
  * Breakpoint mixins
@@ -71,6 +76,7 @@
     line-height: 1;
     display: flex; }
   .block-directory-block-ratings .block-directory-block-ratings__rating-count {
+    color: #606a73;
     font-size: ms(-2); }
   .block-directory-block-ratings svg {
     fill: #ffb900; }
@@ -94,10 +100,11 @@
   font-weight: 500; }
 
 .block-directory-compact-list__item-author {
-  color: #757575;
+  color: #555d66;
   font-size: 11px; }
 
 .block-directory-downloadable-block-author-info__content {
+  color: #606a73;
   font-size: 12px; }
 
 .block-directory-downloadable-block-author-info__content-author {
@@ -126,8 +133,6 @@
     height: 36px;
     font-size: 36px;
     background-color: #ddd; }
-  .block-directory-downloadable-block-icon > img {
-    width: 100%; }
 
 .block-directory-downloadable-block-info__content {
   margin: 0 0 16px;
@@ -137,7 +142,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 2px;
-  color: #757575;
+  color: #606a73;
   font-size: 12px; }
 
 .block-directory-downloadable-block-info__meta:last-child {
@@ -145,7 +150,7 @@
 
 .block-directory-downloadable-block-info__icon {
   margin-right: 4px;
-  fill: #757575; }
+  fill: #606a73; }
 
 .block-directory-downloadable-block-list-item {
   width: 100%;
@@ -154,7 +159,7 @@
   display: flex;
   flex-direction: row;
   font-size: 13px;
-  color: #1e1e1e;
+  color: #32373c;
   align-items: flex-start;
   justify-content: center;
   background: transparent;
@@ -199,7 +204,7 @@
   background-color: #f0f0f0; }
 
 .block-directory-downloadable-block-list-item__content {
-  color: #757575; }
+  color: #606a73; }
 
 .block-directory-downloadable-block-notice {
   margin: 0 0 16px; }
@@ -220,14 +225,14 @@
   padding: 16px;
   margin: 0;
   text-align: left;
-  color: #757575; }
+  color: #606a73; }
 
 .block-directory-downloadable-blocks-panel__description.has-no-results {
   font-style: normal;
   padding: 0;
   margin: 112px 0;
   text-align: center;
-  color: #757575; }
+  color: #606a73; }
   .block-directory-downloadable-blocks-panel__description.has-no-results .components-spinner {
     float: inherit; }
 

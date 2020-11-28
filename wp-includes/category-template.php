@@ -325,7 +325,7 @@ function category_description( $category = 0 ) {
  *                                           of the option elements. Accepts any valid term field: 'term_id', 'name',
  *                                           'slug', 'term_group', 'term_taxonomy_id', 'taxonomy', 'description',
  *                                           'parent', 'count'. Default 'term_id'.
- *     @type string|array $taxonomy          Name of the taxonomy or taxonomies to retrieve. Default 'category'.
+ *     @type string|array $taxonomy          Name of the category or categories to retrieve. Default 'category'.
  *     @type bool         $hide_if_empty     True to skip generating markup if no categories are found.
  *                                           Default false (create select element even if no categories are found).
  *     @type bool         $required          Whether the `<select>` element should have the HTML5 'required' attribute.
@@ -433,7 +433,7 @@ function wp_dropdown_categories( $args = '' ) {
 
 			/** This filter is documented in wp-includes/category-template.php */
 			$show_option_all = apply_filters( 'list_cats', $parsed_args['show_option_all'], null );
-			$selected        = ( '0' === (string) $parsed_args['selected'] ) ? " selected='selected'" : '';
+			$selected        = ( '0' === strval( $parsed_args['selected'] ) ) ? " selected='selected'" : '';
 			$output         .= "\t<option value='0'$selected>$show_option_all</option>\n";
 		}
 
@@ -512,7 +512,6 @@ function wp_dropdown_categories( $args = '' ) {
  *     @type string       $style                 The style used to display the categories list. If 'list', categories
  *                                               will be output as an unordered list. If left empty or another value,
  *                                               categories will be output separated by `<br>` tags. Default 'list'.
- *     @type string       $taxonomy              Name of the taxonomy to retrieve. Default 'category'.
  *     @type string       $title_li              Text to use for the list title `<li>` element. Pass an empty string
  *                                               to disable. Default 'Categories'.
  *     @type bool|int     $use_desc_for_title    Whether to use the category description as the title attribute.
@@ -737,7 +736,7 @@ function wp_tag_cloud( $args = '' ) {
 		if ( 'edit' === $args['link'] ) {
 			$link = get_edit_term_link( $tag->term_id, $tag->taxonomy, $args['post_type'] );
 		} else {
-			$link = get_term_link( (int) $tag->term_id, $tag->taxonomy );
+			$link = get_term_link( intval( $tag->term_id ), $tag->taxonomy );
 		}
 
 		if ( is_wp_error( $link ) ) {
@@ -1154,8 +1153,7 @@ function get_tag_link( $tag ) {
  * @since 2.3.0
  *
  * @param int $post_id Post ID.
- * @return WP_Term[]|false|WP_Error Array of WP_Term objects on success, false if there are no terms
- *                                  or the post does not exist, WP_Error on failure.
+ * @return array|false|WP_Error Array of tag objects on success, false on failure.
  */
 function get_the_tags( $post_id = 0 ) {
 	$terms = get_the_terms( $post_id, 'post_tag' );
@@ -1167,8 +1165,7 @@ function get_the_tags( $post_id = 0 ) {
 	 *
 	 * @see get_the_terms()
 	 *
-	 * @param WP_Term[]|false|WP_Error $terms Array of WP_Term objects on success, false if there are no terms
-	 *                                        or the post does not exist, WP_Error on failure.
+	 * @param WP_Term[] $terms An array of tags for the given post.
 	 */
 	return apply_filters( 'get_the_tags', $terms );
 }
